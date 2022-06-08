@@ -1,9 +1,5 @@
 package main
 
-// func familyName(fname string, age int) {
-// 	fmt.Println("Hello", age, "year old", fname, "Refsnes")
-// }
-
 // func sum(a, b int) (result int) {
 // 	result = a + b
 // 	return result

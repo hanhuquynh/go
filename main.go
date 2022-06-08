@@ -2,14 +2,14 @@ package main
 
 import "fmt"
 
-func familyName(fname string, age int) {
-	fmt.Println("Hello", age, "year old", fname, "Refsnes")
-}
+// func familyName(fname string, age int) {
+// 	fmt.Println("Hello", age, "year old", fname, "Refsnes")
+// }
 
-func sum(a, b int) (result int) {
-	result = a + b
-	return result
-}
+// func sum(a, b int) (result int) {
+// 	result = a + b
+// 	return result
+// }
 
 func main() {
 	// Variables
@@ -63,6 +63,33 @@ func main() {
 	// fmt.Println("Length arr3:", len(arr3))
 	// fmt.Println("Length arr4:", len(arr4))
 
+	// Slice
+
+	// s1 := []int{2, 4, 5, 6, 7, 8, 10, 13}
+	// s2 := s1[:]   // lấy hết các phần tử của a
+	// s3 := s1[3:]  //index 3 đến hết
+	// s4 := s1[:6]  // từ đầu đến index 5
+	// s5 := s1[3:6] // từ index 3 đến index 5
+
+	// fmt.Printf("s1 %v, %v, %v\n", s1, len(s1), cap(s1))
+	// fmt.Printf("s2 %v, %v, %v\n", s2, len(s2), cap(s2))
+	// fmt.Printf("s3 %v, %v, %v\n", s3, len(s3), cap(s3))
+	// fmt.Printf("s4 %v, %v, %v\n", s4, len(s4), cap(s4))
+	// fmt.Printf("s5 %v, %v, %v\n", s5, len(s5), cap(s5))
+
+	// s6 := make([]int, 10, 20)
+	// fmt.Printf("s6 %v, %v, %v\n", s6, len(s6), cap(s6))
+	// s6 = append(s6, 20, 55, 62, 45, 20, 55, 62, 45, 20, 55)
+	// fmt.Printf("s6 %v, %v, %v\n", s6, len(s6), cap(s6))
+
+	s7 := []int{1, 2, 3}
+	s8 := []int{4, 5, 6}
+
+	s9 := append(s7, s8...)
+	fmt.Printf("s9 %v, %v, %v\n", s9, len(s9), cap(s9))
+
+	// Condition
+
 	// a := 14
 	// b := 14
 	// if a < b {
@@ -110,44 +137,44 @@ func main() {
 	// 	fmt.Println(i)
 	// }
 
-	familyName("Liam", 5)
-	familyName("Jenny", 14)
-	familyName("Anja", 30)
+	// familyName("Liam", 5)
+	// familyName("Jenny", 14)
+	// familyName("Anja", 30)
 
-	result := sum(3, 5)
-	fmt.Println("a + b =", result)
+	// result := sum(3, 5)
+	// fmt.Println("a + b =", result)
 
-	a, name := test(5, "Quỳnh")
-	fmt.Println(a, name)
+	// a, name := test(5, "Quỳnh")
+	// fmt.Println(a, name)
 
-	var person1 Person
+	// var person1 Person
 
-	person1.name = "Quỳnh"
-	person1.address = "Bắc Ninh"
-	person1.age = 21
+	// person1.name = "Quỳnh"
+	// person1.address = "Bắc Ninh"
+	// person1.age = 21
 
-	fmt.Println(person1.name)
-	fmt.Println(person1.age)
-	fmt.Println(person1.address)
+	// fmt.Println(person1.name)
+	// fmt.Println(person1.age)
+	// fmt.Println(person1.address)
 
-	printPerson(person1)
+	// printPerson(person1)
 
 }
 
-type Person struct {
-	name    string
-	age     int
-	address string
-}
+// type Person struct {
+// 	name    string
+// 	age     int
+// 	address string
+// }
 
-func printPerson(per Person) {
-	fmt.Println(per.name)
-	fmt.Println(per.age)
-	fmt.Println(per.address)
-}
+// func printPerson(per Person) {
+// 	fmt.Println(per.name)
+// 	fmt.Println(per.age)
+// 	fmt.Println(per.address)
+// }
 
-func test(a int, name string) (rs1 int, rs2 string) {
-	rs1 = a * a
-	rs2 = "My name is " + name
-	return
-}
+// func test(a int, name string) (rs1 int, rs2 string) {
+// 	rs1 = a * a
+// 	rs2 = "My name is " + name
+// 	return
+// }

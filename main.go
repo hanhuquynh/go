@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // func familyName(fname string, age int) {
 // 	fmt.Println("Hello", age, "year old", fname, "Refsnes")
 // }
@@ -82,11 +80,11 @@ func main() {
 	// s6 = append(s6, 20, 55, 62, 45, 20, 55, 62, 45, 20, 55)
 	// fmt.Printf("s6 %v, %v, %v\n", s6, len(s6), cap(s6))
 
-	s7 := []int{1, 2, 3}
-	s8 := []int{4, 5, 6}
+	// s7 := []int{1, 2, 3}
+	// s8 := []int{4, 5, 6}
 
-	s9 := append(s7, s8...)
-	fmt.Printf("s9 %v, %v, %v\n", s9, len(s9), cap(s9))
+	// s9 := append(s7, s8...)
+	// fmt.Printf("s9 %v, %v, %v\n", s9, len(s9), cap(s9))
 
 	// Condition
 
@@ -159,7 +157,23 @@ func main() {
 
 	// printPerson(person1)
 
+	// Map
+	// student := map[string]string{
+	// 	"A": "Bắc Ninh",
+	// 	"B": "Hà Nội",
+	// 	"C": "Bắc Giang",
+	// }
+
+	// student2 := student
+
+	// student2["A"] = "BN"
+
+	// fmt.Println(student)
+	// fmt.Println(student2)
+
 }
+
+// Struct
 
 // type Person struct {
 // 	name    string

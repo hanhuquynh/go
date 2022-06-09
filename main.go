@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // func sum(a, b int) (result int) {
 // 	result = a + b
 // 	return result
@@ -166,6 +168,11 @@ func main() {
 
 	// fmt.Println(student)
 	// fmt.Println(student2)
+	defer fmt.Println("Number 1")
+	fmt.Println("Number 2")
+	defer fmt.Println("Number 3")
+	fmt.Println("Number 4")
+	fmt.Println("Number 5")
 
 }
 

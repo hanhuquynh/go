@@ -168,21 +168,52 @@ func main() {
 
 	// fmt.Println(student)
 	// fmt.Println(student2)
-	defer fmt.Println("Number 1")
-	fmt.Println("Number 2")
-	defer fmt.Println("Number 3")
-	fmt.Println("Number 4")
-	fmt.Println("Number 5")
+	//defer fmt.Println("Number 1")
+	//fmt.Println("Number 2")
+	//defer fmt.Println("Number 3")
+	//fmt.Println("Number 4")
+	//fmt.Println("Number 5")
+	person := User{
+		name:    "Quynh",
+		age:     21,
+		gender:  true,
+		address: "Bac Ninh",
+	}
+	fmt.Println(person.getName())
+	fmt.Println(person.getAge())
+	if person.getGender() == true {
+		fmt.Println("Nam")
+	} else {
+		fmt.Println("Nữ")
+	}
+	fmt.Println(person.getAddress())
 
 }
 
 // Struct
 
-// type Person struct {
-// 	name    string
-// 	age     int
-// 	address string
-// }
+//type User struct {
+//	name    string
+//	age     int64
+//	gender  bool
+//	address string
+//}
+//
+//func (u *User) getName() string {
+//	return u.name
+//}
+//
+//func (u *User) getAge() int64 {
+//	return u.age
+//}
+//
+//func (u *User) getGender() bool {
+//	return u.gender
+//}
+//
+//func (u *User) getAddress() string {
+//	return u.address
+//}
 
 // func printPerson(per Person) {
 // 	fmt.Println(per.name)

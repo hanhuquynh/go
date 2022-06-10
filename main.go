@@ -1,11 +1,13 @@
 package main
 
-import "fmt"
-
 // func sum(a, b int) (result int) {
 // 	result = a + b
 // 	return result
 // }
+
+//var wg = sync.WaitGroup{}
+//var counter = 0
+//var m = sync.RWMutex{}
 
 func main() {
 	// Variables
@@ -173,22 +175,81 @@ func main() {
 	//defer fmt.Println("Number 3")
 	//fmt.Println("Number 4")
 	//fmt.Println("Number 5")
-	person := User{
-		name:    "Quynh",
-		age:     21,
-		gender:  true,
-		address: "Bac Ninh",
-	}
-	fmt.Println(person.getName())
-	fmt.Println(person.getAge())
-	if person.getGender() == true {
-		fmt.Println("Nam")
-	} else {
-		fmt.Println("Nữ")
-	}
-	fmt.Println(person.getAddress())
+	//person := User{
+	//	name:    "Quynh",
+	//	age:     21,
+	//	gender:  true,
+	//	address: "Bac Ninh",
+	//}
+	//fmt.Println(person.getName())
+	//fmt.Println(person.getAge())
+	//if person.getGender() == true {
+	//	fmt.Println("Nam")
+	//} else {
+	//	fmt.Println("Nữ")
+	//}
+	//fmt.Println(person.getAddress())
+	//a := 5
+	//b := 3
+	//if b == 0 {
+	//	panic("b phải khác 0")
+	//} else {
+	//	fmt.Println(a / b)
+	//}
 
+	// Pointer
+	//var a int = 25
+	//var b *int = &a
+	//fmt.Println(a, *b)
+	//a = 12
+	//fmt.Println(a, *b)
+	//*b = 2512
+	//fmt.Println(a, *b)
+
+	//	Goroutine
+
+	//var wg = sync.WaitGroup{}
+	//wg.Add(2)
+	//go func() {
+	//	count("Số")
+	//	wg.Done()
+	//}()
+	//go func() {
+	//	count("Number")
+	//	wg.Done()
+	//}()
+	//
+	//wg.Wait()
+	//fmt.Println("done")
+	//	for i := 0; i < 10; i++ {
+	//		wg.Add(2)
+	//		m.RLock()
+	//		go sayHello()
+	//		m.Lock()
+	//		go increment()
+	//	}
+	//	wg.Wait()
 }
+
+//
+//func sayHello() {
+//	fmt.Printf("Hello %v\n", counter)
+//	m.RUnlock()
+//	wg.Done()
+//}
+//
+//func increment() {
+//	counter++
+//	m.Unlock()
+//	wg.Done()
+//}
+
+//func count(name string) {
+//	for i := 1; i <= 5; i++ {
+//		fmt.Println(name, i)
+//		time.Sleep(time.Second)
+//	}
+//}
 
 // Struct
 

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Student 1",
+    "address": "Bắc Ninh",
+    "phone": "0987654321"
+  },
+  {
+    "name": "Student 2",
+    "address": "Hà Nội",
+    "phone": "0987654321"
+  }
+]

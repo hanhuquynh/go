@@ -1,9 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"sort"
 )
+
+// Bài 2
+type Serve struct {
+	Name  string
+	Class string
+}
 
 // Bài 7
 type User struct {
@@ -29,25 +38,59 @@ func (u *User) GetAddress() string {
 	return u.address
 }
 
-// Bài 6
-func bai6() {
+func main() {
+	// Bài 2
+	fmt.Println("Bài 2: ")
+	content, err := ioutil.ReadFile("serve.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var serve []Serve
+	err = json.Unmarshal(content, &serve)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Printf("%v", serve)
+
+	fmt.Println("----------------------------------------------------------------------")
+
+	// Bài 4
+	fmt.Println("Bài 4:")
+
+	obj := Serve{
+		Name:  "fileCustome",
+		Class: "org.cofax.cds.FileServlet.Custome",
+	}
+
+	serve = append(serve, obj)
+	fmt.Printf("%v\n", serve)
+
+	fmt.Println("----------------------------------------------------------------------")
+
+	// Bài 5
+	fmt.Println("Bài 5:")
+
+	for i := 0; i < len(serve); i++ {
+		fmt.Printf("%p - %v\n", &serve[i], serve[i])
+	}
+
+	fmt.Println("----------------------------------------------------------------------")
+
+	// Bài 6
+	fmt.Println("Bài 6:")
 	num := []int{11, 34, 56, 77, 99, 109, 66, 20, 88, 34}
 	sort.Ints(num)
-	num2 := num[1:7]
-	fmt.Println("Bài 6:")
 	fmt.Printf("%v\n", num)
+	num2 := num[1:7]
 	fmt.Printf("%v\n", num2)
-	fmt.Println("----------------------------------------------------------------------")
 	/*
 		num3 := num[1:15]
 		fmt.Printf("%v\n", num3)
 		=> Có lỗi do capacity của slice = 10
 	*/
-}
-
-func main() {
-	// Bài 6
-	bai6()
+	fmt.Println("----------------------------------------------------------------------")
 
 	// Bài 7
 	fmt.Println("Bài 7: ")

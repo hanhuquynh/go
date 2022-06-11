@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"sort"
+	"strings"
 )
 
 // Bài 2
@@ -53,9 +54,19 @@ func main() {
 	}
 
 	log.Printf("%v", serve)
-
 	fmt.Println("----------------------------------------------------------------------")
 
+	// Bài 3
+	fmt.Println("Bài 3: ")
+	for _, s := range serve {
+		classObj := s.Class
+		classObj = strings.ToLower(classObj)
+
+		if strings.Contains(classObj, "admin") {
+			log.Println(classObj)
+		}
+	}
+	fmt.Println("----------------------------------------------------------------------")
 	// Bài 4
 	fmt.Println("Bài 4:")
 

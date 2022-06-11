@@ -6,5 +6,17 @@
     {
         "name": "fileServlet",
         "class": "org.cofax.cds.FileServlet"
+    },
+    {
+        "name": "fileServlet4",
+        "class": "org.cofax.cds.FileServlet"
+    },
+    {
+        "name": "fileServlet 2",
+        "class": "org.cofax.cds.AdminServlet"
+    },
+    {
+        "name": "fileServlet 3",
+        "class": "org.cofax.cds.AdminServlet"
     }
 ]

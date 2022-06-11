@@ -1,11 +1,5 @@
 package main
 
-import (
-	"encoding/json"
-	"io/ioutil"
-	"log"
-)
-
 // func sum(a, b int) (result int) {
 // 	result = a + b
 // 	return result
@@ -14,11 +8,6 @@ import (
 //var wg = sync.WaitGroup{}
 //var counter = 0
 //var m = sync.RWMutex{}
-type Student struct {
-	Name    string
-	Address string
-	Phone   string
-}
 
 func main() {
 	// Variables
@@ -241,39 +230,6 @@ func main() {
 	//	}
 	//	wg.Wait()
 
-	content, err := ioutil.ReadFile("student.json")
-	if err != nil {
-		log.Fatal(err)
-	}
-	//data := string(content)
-	//log.Printf("%v, %T", data, data)
-	var student []Student
-	err = json.Unmarshal(content, &student)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Printf("%v", student)
-	log.Printf("%T", student)
-
-	student1 := Student{Name: "Student 3", Address: "BN", Phone: "0987474732"}
-	student2 := Student{Name: "Student 4", Address: "HN", Phone: "0987474755"}
-	student3 := Student{Name: "Student 5", Address: "BN", Phone: "0987474733"}
-
-	student = append(student, student1, student2, student3)
-	log.Printf("%v", student)
-	//log.Printf("%p", student)
-	//log.Printf("%p-%v", &student[0], student[0])
-	//log.Printf("%p-%v", &student[1], student[1])
-	//log.Printf("%p-%v", &student[2], student[2])
-	//log.Printf("%p-%v", &student[3], student[3])
-	//log.Printf("%p-%v", &student[4], student[4])
-	student4 := Student{Name: "Student 6", Address: "HN", Phone: "0987474733"}
-	student = append(student, student4)
-	for i := 0; i < len(student); i++ {
-		log.Printf("%p-%v", &student[i], student[i])
-	}
-
 }
 
 //
@@ -298,12 +254,13 @@ func main() {
 
 // Struct
 
-//type User struct {
-//	name    string
-//	age     int64
-//	gender  bool
-//	address string
-//}
+type User struct {
+	name    string
+	age     int64
+	gender  bool
+	address string
+}
+
 //
 //func (u *User) getName() string {
 //	return u.name

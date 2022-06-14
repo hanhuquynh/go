@@ -36,7 +36,7 @@ func main() {
 	fmt.Println("Day of the week:", d.Weekday())
 	fmt.Println("--------------------------------------------")
 
-	//	 Bài 6:
+	//	Bài 6:
 
 	/*
 		Thời gian dạng số được sử dụng với mốc đơn vị:

@@ -49,10 +49,9 @@ func main() {
 	//	Bài 9:
 	fmt.Println("Bài 9: ")
 
-	f := func() {
-		fmt.Println("I'm study")
-	}
-	time.AfterFunc(time.Millisecond*100, f)
+	time.AfterFunc(time.Millisecond*100, func() {
+		fmt.Println("i'm study")
+	})
 	time.Sleep(time.Second)
 
 	fmt.Println("--------------------------------------------")

@@ -1,14 +1,20 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"time"
 )
+
+func x(ctx context.Context) context.Context {
+	return context.WithValue(context.Background(), "current", time.Now().UnixNano())
+}
 
 func main() {
 	// Bài 1:
 	fmt.Println("Bài 1:")
 	for i := 1; i <= 3; i++ {
+		time.Sleep(time.Second * 3)
 		timeNow := time.Now().UnixMilli()
 		fmt.Println(timeNow)
 		time.Sleep(time.Second * 3)
@@ -20,7 +26,26 @@ func main() {
 	fmt.Println("Bài 2:")
 
 	today := time.Now()
-	fmt.Println("Today:", today.Day(), today)
+	fmt.Println("Today:", today.Day())
+
+	fmt.Println("--------------------------------------------")
+
+	// Bài 3:
+	fmt.Println("Bài 3:")
+
+	ctx, _ := context.WithTimeout(context.Background(), time.Second*3)
+
+	go func(ctx context.Context) {
+		for i := 1; i <= 3; i++ {
+			time.Sleep(time.Second * 3)
+			fmt.Println("Sleep", i)
+			time.Sleep(time.Second * 3)
+		}
+	}(ctx)
+	select {
+	case <-ctx.Done():
+		fmt.Println("Cancelled:", ctx.Err())
+	}
 
 	fmt.Println("--------------------------------------------")
 
@@ -45,6 +70,24 @@ func main() {
 			-> microseconds
 			-> nanoseconds
 	*/
+
+	// Bài 7:
+	fmt.Println("Bài 7:")
+
+	ctx2 := context.Background()
+	ctx2 = x(ctx2)
+
+	currentTime := ctx2.Value("current").(int64)
+	fmt.Println(currentTime)
+
+	time.Sleep(time.Second * 3)
+	currentTimeAfter3s := time.Now().UnixNano()
+	fmt.Println(currentTimeAfter3s)
+
+	hieu := currentTimeAfter3s - currentTime
+	fmt.Println(hieu)
+
+	fmt.Println("--------------------------------------------")
 
 	//	Bài 9:
 	fmt.Println("Bài 9: ")

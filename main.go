@@ -84,8 +84,8 @@ func main() {
 	currentTimeAfter3s := time.Now().UnixNano()
 	fmt.Println(currentTimeAfter3s)
 
-	hieu := currentTimeAfter3s - currentTime
-	fmt.Println(hieu)
+	result := currentTimeAfter3s - currentTime
+	fmt.Println(result)
 
 	fmt.Println("--------------------------------------------")
 

@@ -13,11 +13,10 @@ func x(ctx context.Context) context.Context {
 func main() {
 	// Bài 1:
 	fmt.Println("Bài 1:")
-	time.Sleep(time.Second * 3)
 	for i := 1; i <= 3; i++ {
+		time.Sleep(time.Second * 3)
 		timeNow := time.Now().UnixMilli()
 		fmt.Println(timeNow)
-		time.Sleep(time.Second * 3)
 	}
 	fmt.Println("Kết thúc")
 	fmt.Println("--------------------------------------------")

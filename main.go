@@ -35,15 +35,18 @@ func main() {
 
 	ctx, _ := context.WithTimeout(context.Background(), time.Second*3)
 	go func(ctx context.Context) {
-		for i := 1; i <= 3; i++ {
-			fmt.Println("Sleep", i)
+		for {
 			time.Sleep(time.Second * 3)
+			select {
+			case <-ctx.Done():
+				fmt.Println("Cancelled:", ctx.Err())
+				return
+			default:
+				fmt.Println("Sleep")
+			}
 		}
 	}(ctx)
-	select {
-	case <-ctx.Done():
-		fmt.Println("Cancelled:", ctx.Err())
-	}
+	time.Sleep(10 * time.Second)
 
 	fmt.Println("--------------------------------------------")
 

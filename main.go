@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"sync"
 	"time"
@@ -21,5 +22,7 @@ func chanRoutine() {
 }
 
 func main() {
+	// Bài 1"
+	fmt.Println("Bài 1:")
 	chanRoutine()
 }

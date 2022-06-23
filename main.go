@@ -77,7 +77,9 @@ func main() {
 	fmt.Println("-----------------------------------------------")
 
 	// Bài 4:
+
 	fmt.Println("Bài 4:")
+
 	file, err := os.Open("file.txt")
 	if err != nil {
 		log.Print(err)

@@ -93,7 +93,7 @@ func main() {
 
 	fmt.Println("Length X: ", len(X))
 
-	fmt.Println("-----------------------------------------------") 
+	fmt.Println("-----------------------------------------------")
 
 	// Bài 3:
 	fmt.Println("Bài 3:")

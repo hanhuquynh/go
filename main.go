@@ -27,6 +27,25 @@ func chanRoutine() {
 	wg.Wait()
 }
 
+func errFunc() {
+	m := make(map[int]int)
+	for i := 0; i < 1000; i++ {
+		go func() {
+			mu.Lock()
+			for j := 1; j < 10000; j++ {
+				if _, ok := m[j]; ok {
+					delete(m, j)
+					continue
+				}
+				m[j] = j * 10
+			}
+			mu.Unlock()
+		}()
+	}
+
+	log.Print("done")
+}
+
 func main() {
 
 	// Bài 1"
@@ -73,6 +92,13 @@ func main() {
 	}
 
 	fmt.Println("Length X: ", len(X))
+
+	fmt.Println("-----------------------------------------------")
+
+	// Bài 3:
+	fmt.Println("Bài 3:")
+
+	errFunc()
 
 	fmt.Println("-----------------------------------------------")
 

@@ -16,11 +16,6 @@ var (
 	X  = make(map[string]string)
 )
 
-type Line struct {
-	CurrentLine int
-	Value       string
-}
-
 func chanRoutine() {
 	wg.Add(1)
 	log.Print("hello 1")

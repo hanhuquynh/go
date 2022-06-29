@@ -120,7 +120,7 @@ func main() {
 		fmt.Println(v)
 	}
 
-	fmt.Println("Xong")
+	fmt.Println("Xong!")
 }
 
 func worker(data chan string) {

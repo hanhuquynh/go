@@ -37,18 +37,20 @@ func errFunc() {
 	m := make(map[int]int)
 	for i := 0; i < 1000; i++ {
 		go func() {
-			mu.Lock()
 			for j := 1; j < 10000; j++ {
+				mu.Lock()
 				if _, ok := m[j]; ok {
 					delete(m, j)
 					continue
 				}
 				m[j] = j * 10
+				mu.Unlock()
 			}
-			mu.Unlock()
 		}()
 	}
-
+	for key, value := range m {
+		fmt.Printf("Key: %v, Value: %v\n", key, value)
+	}
 	log.Print("done")
 }
 

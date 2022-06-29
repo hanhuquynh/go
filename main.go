@@ -16,6 +16,11 @@ var (
 	X  = make(map[string]string)
 )
 
+type Line struct {
+	CurrentLine int
+	Value       string
+}
+
 func chanRoutine() {
 	wg.Add(1)
 	log.Print("hello 1")
@@ -111,8 +116,11 @@ func main() {
 
 	go worker(data)
 
+	count := 0
 	for v := range data {
-		fmt.Println(v)
+		count++
+		rs := Line{CurrentLine: count, Value: v}
+		fmt.Printf("${%v} giá trị là: ${%v}\n", rs.CurrentLine, rs.Value)
 	}
 
 	fmt.Println("Xong!")

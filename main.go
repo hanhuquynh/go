@@ -13,7 +13,13 @@ import (
 var (
 	wg sync.WaitGroup
 	mu sync.Mutex
+	X  = make(map[string]string)
 )
+
+type Line struct {
+	CurrentLine int
+	Value       string
+}
 
 func chanRoutine() {
 	wg.Add(1)
@@ -55,41 +61,39 @@ func main() {
 
 	// Bài 2:
 	fmt.Println("Bài 2:")
-	X := make(map[string]string)
 
 	wg.Add(3)
-
 	go func() {
-		mu.Lock()
 		for i := 1; i <= 1000; i++ {
+			mu.Lock()
 			X["Key i "+strconv.Itoa(i)] = "Value " + strconv.Itoa(i)
+			mu.Unlock()
 		}
-		mu.Unlock()
 		wg.Done()
 	}()
 
 	go func() {
-		mu.Lock()
 		for j := 1; j <= 1000; j++ {
+			mu.Lock()
 			X["Key j "+strconv.Itoa(j)] = "Value " + strconv.Itoa(j)
+			mu.Unlock()
 		}
-		mu.Unlock()
 		wg.Done()
 	}()
 
 	go func() {
-		mu.Lock()
 		for k := 1; k <= 1000; k++ {
+			mu.Lock()
 			X["Key k "+strconv.Itoa(k)] = "Value " + strconv.Itoa(k)
+			mu.Unlock()
 		}
-		mu.Unlock()
 		wg.Done()
 	}()
 	wg.Wait()
 
-	for key, value := range X {
-		fmt.Printf("%v: %v\n", key, value)
-	}
+	// for key, value := range X {
+	// 	fmt.Printf("%v: %v\n", key, value)
+	// }
 
 	fmt.Println("Length X: ", len(X))
 
@@ -106,6 +110,18 @@ func main() {
 
 	fmt.Println("Bài 4:")
 
+	data := make(chan string, 10)
+
+	go worker(data)
+
+	for v := range data {
+		fmt.Println(v)
+	}
+
+	fmt.Println("Xong")
+}
+
+func worker(data chan string) {
 	file, err := os.Open("file.txt")
 	if err != nil {
 		log.Print(err)
@@ -114,9 +130,10 @@ func main() {
 	fileScanner := bufio.NewScanner(file)
 
 	for fileScanner.Scan() {
-		fmt.Println(fileScanner.Text())
+		line := fileScanner.Text()
+		data <- line
 	}
+	close(data)
 
 	file.Close()
-
 }

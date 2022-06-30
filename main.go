@@ -11,8 +11,8 @@ import (
 )
 
 var (
-	wg sync.WaitGroup
-	mu sync.Mutex
+	wg = sync.WaitGroup{}
+	mu = sync.Mutex{}
 	X  = make(map[string]string)
 )
 
@@ -31,6 +31,16 @@ func chanRoutine() {
 	}()
 	log.Print("hello 2")
 	wg.Wait()
+}
+
+func appendX() {
+	for i := 1; i <= 1000; i++ {
+		mu.Lock()
+		X["Key "+strconv.Itoa(i)] = "Value " + strconv.Itoa(i)
+		mu.Unlock()
+	}
+
+	wg.Done()
 }
 
 func errFunc() {
@@ -63,41 +73,15 @@ func main() {
 
 	// Bài 2:
 	fmt.Println("Bài 2:")
-
-	wg.Add(3)
-	go func() {
-		for i := 1; i <= 1000; i++ {
-			mu.Lock()
-			X["Key i "+strconv.Itoa(i)] = "Value " + strconv.Itoa(i)
-			mu.Unlock()
-		}
-		wg.Done()
-	}()
-
-	go func() {
-		for j := 1; j <= 1000; j++ {
-			mu.Lock()
-			X["Key j "+strconv.Itoa(j)] = "Value " + strconv.Itoa(j)
-			mu.Unlock()
-		}
-		wg.Done()
-	}()
-
-	go func() {
-		for k := 1; k <= 1000; k++ {
-			mu.Lock()
-			X["Key k "+strconv.Itoa(k)] = "Value " + strconv.Itoa(k)
-			mu.Unlock()
-		}
-		wg.Done()
-	}()
+	for i := 0; i < 3; i++ {
+		wg.Add(1)
+		go appendX()
+	}
 	wg.Wait()
 
 	for key, value := range X {
 		fmt.Printf("%v: %v\n", key, value)
 	}
-
-	fmt.Println("Length X: ", len(X))
 
 	fmt.Println("-----------------------------------------------")
 

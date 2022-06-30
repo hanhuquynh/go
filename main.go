@@ -93,9 +93,9 @@ func main() {
 	}()
 	wg.Wait()
 
-	// for key, value := range X {
-	// 	fmt.Printf("%v: %v\n", key, value)
-	// }
+	for key, value := range X {
+		fmt.Printf("%v: %v\n", key, value)
+	}
 
 	fmt.Println("Length X: ", len(X))
 
